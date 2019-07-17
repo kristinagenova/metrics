@@ -14,4 +14,11 @@ class Metrics(models.Model):
     revenue = models.FloatField()
 
     class Meta:
-        db_table = 'metrics'
+        db_table = "metrics"
+
+    def get_metrics_from_db(self, group_by, show, filters, sort):
+        return Metrics.objects \
+            .values(*group_by) \
+            .annotate(**show) \
+            .filter(**filters)\
+            .order_by(sort)
