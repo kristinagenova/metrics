@@ -8,7 +8,7 @@ class DateSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         if attrs['approx'] not in ["to", "from", ""]:
-            raise ValidationError("The only accepted keywords here are the following: from, before or leave blank")
+            raise ValidationError("The only accepted keywords here are the following: from, to or leave blank")
         return attrs
 
 
